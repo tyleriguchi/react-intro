@@ -1,12 +1,19 @@
 // Import React
 import React from 'react';
 
+import codeExample from './thing.example'
+
 // Import Spectacle Core tags
 import {
   BlockQuote,
   Cite,
+  Code,
+  CodePane,
   Deck,
+  Fill,
+  Fit,
   Heading,
+  Layout,
   ListItem,
   List,
   Quote,
@@ -50,13 +57,10 @@ export default class Presentation extends React.Component {
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
             Intro to react
           </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            open the presentation/index.js file to get started
-          </Text>
         </Slide>
         <Slide transition={['fade']} bgColor="tertiary">
           <Heading size={1} textColor="secondary">
-            Whats react?
+            What's react?
           </Heading>
           <List>
             <ListItem>Library not a framework</ListItem>
@@ -127,77 +131,134 @@ export default class Presentation extends React.Component {
 
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
+        {/*<Slide transition={['fade']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
             some downsides of react
           </Heading>
 
           <List>
             <ListItem>tooling can be complicated</ListItem>
-            // <ListItem>need to know javascript</ListItem>
+            <ListItem>need to know javascript</ListItem>
             <ListItem>can require more code for simple things</ListItem>
           </List>
 
           <Notes>
             <NotesHeader>
-              tooling can be complicated
+          tooling can be complicated
             </NotesHeader>
             <List>
-              <ListItem>
-                most react projects use babel / jsx, which requires a build tool such as webpack
-              </ListItem>
-              <ListItem>
-                awhile back there wasn't a community supported solution for
-                getting started quickly with a react project
-              </ListItem>
-              <ListItem>
-                now there is create react app, a cli project generator that abstracts
-                the build tools away
-              </ListItem>
+          <ListItem>
+          most react projects use babel / jsx, which requires a build tool such as webpack
+          </ListItem>
+          <ListItem>
+          awhile back there wasn't a community supported solution for
+          getting started quickly with a react project
+          </ListItem>
+          <ListItem>
+          now there is create react app, a cli project generator that abstracts
+          the build tools away
+          </ListItem>
             </List>
 
             <NotesHeader>
-              can require more code for simple things
+          can require more code for simple things
             </NotesHeader>
             <List>
-              <ListItem>
-                to show or hide a div, jquery is much simpler
-              </ListItem>
-              <ListItem>
-                for more complex ui, jquery becomes harder to manage
-              </ListItem>
-              <ListItem>
-                for example,
-              </ListItem>
+          <ListItem>
+          to show or hide a div, jquery is much simpler
+          </ListItem>
+          <ListItem>
+          for more complex ui, jquery becomes harder to manage
+          </ListItem>
+          <ListItem>
+          for example,
+          </ListItem>
             </List>
 
             <NotesHeader>
-              need to know javascript
+          need to know javascript
+            </NotesHeader>
+            <List>
+          <ListItem>
+          both good and bad,
+          </ListItem>
+            </List>
+          </Notes>
+        </Slide>*/}
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            whats babel?
+          </Heading>
+
+          <List>
+            <ListItem>
+              Transpiler
+            </ListItem>
+            <ListItem>
+              Allows you to use the new features of javascript before browsers
+              support it natively
+            </ListItem>
+
+          </List>
+
+          <Notes>
+            <NotesHeader>
+              what is babel / jsx
             </NotesHeader>
             <List>
               <ListItem>
-                both good and bad,
+                babel is a transpiler, or languages that compile to another language
+              </ListItem>
+
+              <ListItem>
+                in this case babel is compiled into javascript the browser can understand it
+              </ListItem>
+              <ListItem>
+                Reason is so the code can run in older browsers as well
               </ListItem>
             </List>
           </Notes>
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            input
-          </Heading>
-
-          <ComponentPlayground>
-          </ComponentPlayground>
-        </Slide>
+        
 
         <Slide transition={['fade']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
-            react stuff
+            jsx example
           </Heading>
 
-          <ComponentPlayground>
-          </ComponentPlayground>
+          <Layout>
+            <Fill>
+              <CodePane
+                lang="jsx"
+                padding="10px"
+                source={`const element = (
+                  <h1 className="greeting">
+                    Hello, world!
+                  </h1>
+                );`
+                } />
+            </Fill>
+            <Fill>
+              <CodePane
+                lang="js"
+                padding="10px"
+                source={
+                `const element = React.createElement(
+                  'h1',
+                  {className: 'greeting'},
+                  'Hello, world!'
+                );`
+                }/>
+            </Fill>
+          </Layout>
+
+          <Notes>
+            <NotesHeader>
+              what is babel / jsx
+            </NotesHeader>
+          </Notes>
         </Slide>
 
         <Slide transition={['fade']} bgColor="tertiary">
