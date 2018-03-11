@@ -1,4 +1,8 @@
-
 `
-const hey = () => {console.log("hey")}
+() => (
+  <div>
+    <span>some stuff</span>
+  </div>
+
+)
 `

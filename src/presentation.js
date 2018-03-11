@@ -1,8 +1,6 @@
 // Import React
 import React from 'react';
 
-import codeExample from './thing.example'
-
 // Import Spectacle Core tags
 import {
   BlockQuote,
@@ -22,6 +20,8 @@ import {
   Notes,
   ComponentPlayground
 } from 'spectacle';
+
+import * as codeExamples from './code-examples/examples'
 
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
@@ -131,61 +131,6 @@ export default class Presentation extends React.Component {
 
         </Slide>
 
-        {/*<Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            some downsides of react
-          </Heading>
-
-          <List>
-            <ListItem>tooling can be complicated</ListItem>
-            <ListItem>need to know javascript</ListItem>
-            <ListItem>can require more code for simple things</ListItem>
-          </List>
-
-          <Notes>
-            <NotesHeader>
-          tooling can be complicated
-            </NotesHeader>
-            <List>
-          <ListItem>
-          most react projects use babel / jsx, which requires a build tool such as webpack
-          </ListItem>
-          <ListItem>
-          awhile back there wasn't a community supported solution for
-          getting started quickly with a react project
-          </ListItem>
-          <ListItem>
-          now there is create react app, a cli project generator that abstracts
-          the build tools away
-          </ListItem>
-            </List>
-
-            <NotesHeader>
-          can require more code for simple things
-            </NotesHeader>
-            <List>
-          <ListItem>
-          to show or hide a div, jquery is much simpler
-          </ListItem>
-          <ListItem>
-          for more complex ui, jquery becomes harder to manage
-          </ListItem>
-          <ListItem>
-          for example,
-          </ListItem>
-            </List>
-
-            <NotesHeader>
-          need to know javascript
-            </NotesHeader>
-            <List>
-          <ListItem>
-          both good and bad,
-          </ListItem>
-            </List>
-          </Notes>
-        </Slide>*/}
-
         <Slide transition={['fade']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
             whats babel?
@@ -221,7 +166,157 @@ export default class Presentation extends React.Component {
           </Notes>
         </Slide>
 
-        
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            most useful babel things to know
+          </Heading>
+
+          <List>
+            <ListItem>
+              Class declerations
+            </ListItem>
+
+            <ListItem>
+              import / export
+            </ListItem>
+
+            <ListItem>
+              Arrow function
+            </ListItem>
+
+            <ListItem>
+              const decleration
+            </ListItem>
+
+            <ListItem>
+              spread operator
+            </ListItem>
+
+            <ListItem>
+              object destructuring
+            </ListItem>
+
+            <ListItem>
+              String interpolation
+            </ListItem>
+
+            <ListItem>
+              Default arguments
+            </ListItem>
+          </List>
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            Class declerations
+          </Heading>
+
+          <CodePane
+            lang="js"
+            source={codeExamples.classExample.jsExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+
+          <CodePane
+            lang="ruby"
+            source={codeExamples.classExample.rubyExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            Import / Export
+          </Heading>
+
+          <CodePane
+            lang="js"
+            source={codeExamples.importExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            Arrow function
+          </Heading>
+
+          <CodePane
+            lang="js"
+            source={codeExamples.arrowExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            const deceleration
+          </Heading>
+
+          <CodePane
+            lang="js"
+            source={codeExamples.constExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            spread operator
+          </Heading>
+
+          <CodePane
+            lang="js"
+            source={codeExamples.spreadExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            object destructuring
+          </Heading>
+
+          <CodePane
+            lang="js"
+            source={codeExamples.destructureExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            String interpolation
+          </Heading>
+
+          <CodePane
+            lang="js"
+            source={codeExamples.interpolationExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            String interpolation
+          </Heading>
+
+          <CodePane
+            lang="js"
+            source={codeExamples.argsExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+        </Slide>
 
         <Slide transition={['fade']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
