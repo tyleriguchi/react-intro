@@ -307,7 +307,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['fade']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
-            String interpolation
+            Default arguments
           </Heading>
 
           <CodePane

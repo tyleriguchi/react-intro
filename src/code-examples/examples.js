@@ -119,15 +119,19 @@ export const destructureExample = `
 
 export const interpolationExample = `
   "www.giphy.com/search=" + search
-  \`www.giphy.com/search=${search}\`
+  \`www.giphy.com/search=\${search}\`
 `
 
 export const argsExample = `
   function myFunc (str) {
     console.log(str || 'hey snap')
   }
-  
+
   function myFunc (str = 'hey snap') {
     console.log(str)
+  }
+
+  function myFunc (obj = {foo: "hey snap"}) {
+    console.log(obj.foo)
   }
 `
