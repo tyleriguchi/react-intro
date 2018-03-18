@@ -505,3 +505,90 @@ render(
   <DataList />
 )
 `
+
+export const passingData = `
+const data = [
+  {
+    name: 'Snap',
+    color: 'lightblue'
+  },
+  {
+    name: 'Tyler',
+    color: 'indigo'
+  },
+  {
+    name: 'Arnold',
+    color: 'fuschia'
+  }
+]
+
+const fetch = (url) => {
+  return new Promise( (resolve) => {
+    setTimeout( () => {
+      resolve(data)
+    }, 3000)
+  })
+}
+
+const ListComponent = ({data}) => {
+  return (
+    <ul style={{listStyle: 'none'}}>
+      {data.map( (item) => {
+        return (
+          <li
+            key={item.name}
+            style={{
+              padding: '10px',
+              fontSize: '1.5em',
+              color: item.color
+            }}
+          >
+            {item.name}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
+class FetchListData extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      data: [],
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    fetch('some-url.com').then( data => {
+      this.setState({
+        // data: data
+        data,
+        loading: false,
+      })
+    })
+  }
+
+  render() {
+    const { data, loading } = this.state
+
+    if (loading) {
+      return (
+        <div>
+          Loading...
+        </div>
+      )
+    }
+
+    return (
+      <ListComponent data={data} />
+    )
+  }
+}
+
+render(
+  <FetchListData />
+)
+`

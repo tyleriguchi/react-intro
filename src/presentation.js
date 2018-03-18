@@ -408,17 +408,6 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['fade']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
-            Handling lists
-          </Heading>
-
-          <ComponentPlayground
-            code={codeExamples.listComponent}
-            margin="20px auto"
-          />
-        </Slide>
-
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
             Fetching data on events
           </Heading>
 
@@ -435,6 +424,17 @@ export default class Presentation extends React.Component {
 
           <ComponentPlayground
             code={codeExamples.dataFetchingOnMount}
+            margin="20px auto"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            Passing data to other components
+          </Heading>
+
+          <ComponentPlayground
+            code={codeExamples.passingData}
             margin="20px auto"
           />
         </Slide>
