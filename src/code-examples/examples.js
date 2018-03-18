@@ -189,17 +189,20 @@ export const intermediateHtml = `
   )
 `
 export const basicJSX = `
-  const SnapButton = ({text}) => {
-    return (
-      <button type="button">
-        Hey {text}
-      </button>
-    )
-  }
+// const SnapButton = (props) => {
+//  const { text } = props
 
-  render(
-    <SnapButton text="Snap" />
-  );
+const SnapButton = ({text}) => {
+  return (
+    <button type="button">
+      Hey {text}
+    </button>
+  )
+}
+
+render(
+  <SnapButton text="Snap" />
+);
 `
 
 export const basicEventHandler = `
@@ -225,9 +228,9 @@ render(
 export const basicStatefulComponent = `
 const buttonStyle = {
   color: 'white',
-  backgroundColor: 'indigo',
+  backgroundColor: 'rebeccapurple',
   padding: '8px 15px',
-  border: '1px solid indigo',
+  border: '1px solid rebeccapurple',
   fontSize: '1.2rem',
   borderRadius: '5px',
   outline: 'none',
@@ -267,7 +270,7 @@ class Counter extends React.Component {
         </button>
         <div style={{
           marginTop: '20px',
-          color: 'indigo',
+          color: 'rebeccapurple',
           fontSize: '3rem'
         }}>
           {counter}
@@ -281,4 +284,224 @@ class Counter extends React.Component {
 render(
   <Counter text="click here" />
 );
+`
+
+export const listComponent = `
+const data = [
+  {
+    name: 'Snap',
+    color: 'lightblue'
+  },
+  {
+    name: 'Tyler',
+    color: 'indigo'
+  },
+  {
+    name: 'Arnold',
+    color: 'fuschia'
+  }
+]
+
+const ListComponent = ({data}) => {
+  return (
+    <ul style={{listStyle: 'none'}}>
+      {data.map( (item) => {
+        return (
+          <li
+            key={item.name}
+            style={{
+              padding: '10px',
+              fontSize: '1.5em',
+              color: item.color
+            }}
+          >
+            {item.name}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+render(
+  <ListComponent data={data} />
+)
+`
+
+export const dataFetchingOnClick = `
+const data = [
+  {
+    name: 'Snap',
+    color: 'lightblue'
+  },
+  {
+    name: 'Tyler',
+    color: 'indigo'
+  },
+  {
+    name: 'Arnold',
+    color: 'fuschia'
+  }
+]
+
+const fetch = (url) => {
+  return new Promise( (resolve) => {
+    setTimeout( () => {
+      resolve(data)
+    }, 1000)
+  })
+}
+
+const Loading = ({isLoading}) => {
+  if (!isLoading) { return null }
+
+  return (
+    <div style={{marginTop: '20px'}}>
+      Loading...
+    </div>
+  )
+}
+
+class DataList extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      data: [],
+      loading: false
+    }
+
+    this.loadData = this.loadData.bind(this)
+  }
+
+  loadData(e) {
+    this.setState({
+      loading: true
+    })
+
+    fetch().then( data => {
+      this.setState({
+        // data: data
+        data,
+        loading: false
+      })
+    })
+  }
+
+  render() {
+    const { data, loading } = this.state
+
+    return (
+      <div>
+        <button
+          onClick={this.loadData}
+        >
+          Load Data
+        </button>
+
+        <Loading isLoading={loading} />
+        <ul style={{listStyle: 'none', paddingLeft: 0}}>
+          {data.map( (item) => {
+            return (
+              <li
+                key={item.name}
+                style={{
+                  padding: '10px',
+                  fontSize: '1.5em',
+                  color: item.color
+                }}
+              >
+                {item.name}
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    )
+  }
+}
+
+render(
+  <DataList />
+)
+`
+
+export const dataFetchingOnMount = `
+const data = [
+  {
+    name: 'Snap',
+    color: 'lightblue'
+  },
+  {
+    name: 'Tyler',
+    color: 'indigo'
+  },
+  {
+    name: 'Arnold',
+    color: 'fuschia'
+  }
+]
+
+const fetch = (url) => {
+  return new Promise( (resolve) => {
+    setTimeout( () => {
+      resolve(data)
+    }, 3000)
+  })
+}
+
+class DataList extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      data: [],
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    fetch('some-url.com').then( data => {
+      this.setState({
+        // data: data
+        data,
+        loading: false,
+      })
+    })
+  }
+
+  render() {
+    const { data, loading } = this.state
+
+    if (loading) {
+      return (
+        <div>
+          Loading...
+        </div>
+      )
+    }
+
+    return (
+      <ul style={{listStyle: 'none'}}>
+        {data.map( (item) => {
+          return (
+            <li
+              key={item.name}
+              style={{
+                padding: '10px',
+                fontSize: '1.5em',
+                color: item.color
+              }}
+            >
+              {item.name}
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
+}
+
+render(
+  <DataList />
+)
 `
