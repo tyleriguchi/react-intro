@@ -89,6 +89,17 @@ export const constExample = `
   // 1
 `
 
+export const letExample = `
+  let x
+
+  if (someValue) {
+    x = someValue()
+  }
+  else {
+    x = someOtherValue()
+  }
+`
+
 export const spreadExample = `
   const doloresHost = {
     name: 'dolores',
@@ -134,4 +145,140 @@ export const argsExample = `
   function myFunc (obj = {foo: "hey snap"}) {
     console.log(obj.foo)
   }
+`
+
+export const basicHtml = `
+  const styles = {
+    color: 'magenta',
+    fontSize: '32px',
+    fontWeight: 'bold'
+  }
+
+  render(
+    <div
+      className='my-class-name'
+      style={styles}
+    >
+      <h1>Hey Snap</h1>
+    </div>
+  )
+`
+
+export const intermediateHtml = `
+  const styles = {
+    color: 'magenta',
+    fontSize: '32px',
+    fontWeight: 'bold'
+  }
+
+  const someConditional = true
+
+  const imageSrc = "https://www.fillmurray.com/400/300"
+
+  render(
+    <div
+      className={ someConditional ? 'my-class-name' : ''}
+      style={styles}
+    >
+      <h1>Hey Snap</h1>
+      <img
+        src={imageSrc}
+        alt='bill effin murray'
+      />
+    </div>
+  )
+`
+export const basicJSX = `
+  const SnapButton = ({text}) => {
+    return (
+      <button type="button">
+        Hey {text}
+      </button>
+    )
+  }
+
+  render(
+    <SnapButton text="Snap" />
+  );
+`
+
+export const basicEventHandler = `
+const SnapButton = ({text}) => {
+  const handleEvent = (e) => {
+    alert("you clicked the button")
+  }
+
+  return (
+    <button
+      onClick={handleEvent}
+    >
+      Hey {text}
+    </button>
+  )
+}
+
+render(
+  <SnapButton text="Snap" />
+);
+`
+
+export const basicStatefulComponent = `
+const buttonStyle = {
+  color: 'white',
+  backgroundColor: 'indigo',
+  padding: '8px 15px',
+  border: '1px solid indigo',
+  fontSize: '1.2rem',
+  borderRadius: '5px',
+  outline: 'none',
+  cursor: 'pointer'
+}
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      counter: 0
+    }
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(e) {
+    this.setState({
+      counter: this.state.counter += 1
+    })
+  }
+
+  render() {
+    // const text = this.props.text
+    // const counter = this.state.counter
+
+    const { text } = this.props
+    const { counter } = this.state
+
+    return (
+      <div>
+        <button
+          style={buttonStyle}
+          onClick={this.handleClick}>
+          {text}
+        </button>
+        <div style={{
+          marginTop: '20px',
+          color: 'indigo',
+          fontSize: '3rem'
+        }}>
+          {counter}
+        </div>
+      </div>
+    )
+  }
+}
+
+
+render(
+  <Counter text="click here" />
+);
 `

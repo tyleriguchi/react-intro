@@ -174,6 +174,13 @@ export default class Presentation extends React.Component {
 
           <List>
             <ListItem>
+              const decleration
+            </ListItem>
+
+            <ListItem>
+              let decleration
+            </ListItem>
+            <ListItem>
               Class declerations
             </ListItem>
 
@@ -183,10 +190,6 @@ export default class Presentation extends React.Component {
 
             <ListItem>
               Arrow function
-            </ListItem>
-
-            <ListItem>
-              const decleration
             </ListItem>
 
             <ListItem>
@@ -209,22 +212,54 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['fade']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
-            Class declerations
+            const deceleration
           </Heading>
 
           <CodePane
             lang="js"
-            source={codeExamples.classExample.jsExample}
+            source={codeExamples.constExample}
             margin="20px auto"
             overflow = "overflow"
           />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            let deceleration
+          </Heading>
 
           <CodePane
-            lang="ruby"
-            source={codeExamples.classExample.rubyExample}
+            lang="js"
+            source={codeExamples.letExample}
             margin="20px auto"
             overflow = "overflow"
           />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            Class declerations
+          </Heading>
+
+          <Layout>
+            <Fill>
+              <CodePane
+                lang="js"
+                source={codeExamples.classExample.jsExample}
+                padding="20px"
+                overflow = "overflow"
+              />
+            </Fill>
+
+            <Fill>
+              <CodePane
+                lang="ruby"
+                source={codeExamples.classExample.rubyExample}
+                padding="20px"
+                overflow = "overflow"
+              />
+            </Fill>
+          </Layout>
         </Slide>
 
         <Slide transition={['fade']} bgColor="tertiary">
@@ -248,19 +283,6 @@ export default class Presentation extends React.Component {
           <CodePane
             lang="js"
             source={codeExamples.arrowExample}
-            margin="20px auto"
-            overflow = "overflow"
-          />
-        </Slide>
-
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            const deceleration
-          </Heading>
-
-          <CodePane
-            lang="js"
-            source={codeExamples.constExample}
             margin="20px auto"
             overflow = "overflow"
           />
@@ -315,6 +337,61 @@ export default class Presentation extends React.Component {
             source={codeExamples.argsExample}
             margin="20px auto"
             overflow = "overflow"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            Html in jsx
+          </Heading>
+
+          <ComponentPlayground
+            code={codeExamples.basicHtml}
+            margin="20px auto"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            Html in jsx
+          </Heading>
+
+          <ComponentPlayground
+            code={codeExamples.intermediateHtml}
+            margin="20px auto"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            JSX
+          </Heading>
+
+          <ComponentPlayground
+            code={codeExamples.basicJSX}
+            margin="20px auto"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            Handling events
+          </Heading>
+
+          <ComponentPlayground
+            code={codeExamples.basicEventHandler}
+            margin="20px auto"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading size={6} textColor="primary" caps>
+            Stateful components
+          </Heading>
+
+          <ComponentPlayground
+            code={codeExamples.basicStatefulComponent}
+            margin="20px auto"
           />
         </Slide>
 
