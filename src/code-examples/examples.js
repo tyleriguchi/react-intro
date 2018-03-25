@@ -101,7 +101,7 @@ export const letExample = `
 `
 
 export const spreadExample = `
-  const doloresHost = {
+  const host = {
     name: 'dolores',
     status: 'alive'
   }
@@ -110,22 +110,23 @@ export const spreadExample = `
     status: 'dead'
   }
 
-  const newObj = Object.assign({}, doloresHost, update)
+  const newObj = Object.assign({}, host, update)
   // { name: 'dolores', status: 'dead'}
 
-  const spreadObj = { ...doloresHost, ...update}
+  const spreadObj = { ...host, ...update}
   // { name: 'dolores', status: 'dead'}
 `
 
 export const destructureExample = `
-  const doloresHost = {
+  const host = {
     name: 'dolores',
     status: 'alive'
   }
 
-  const status = oldObject.status
+  const { status } = host
+  // status = 'alive'
 
-  const { status } = oldObject
+  // const status = host.status
 `
 
 export const interpolationExample = `
@@ -149,7 +150,7 @@ export const argsExample = `
 
 export const basicHtml = `
   const styles = {
-    color: 'magenta',
+    color: '#7851a9',
     fontSize: '32px',
     fontWeight: 'bold'
   }
@@ -166,7 +167,7 @@ export const basicHtml = `
 
 export const intermediateHtml = `
   const styles = {
-    color: 'magenta',
+    color: '#7851a9',
     fontSize: '32px',
     fontWeight: 'bold'
   }
@@ -228,9 +229,9 @@ render(
 export const basicStatefulComponent = `
 const buttonStyle = {
   color: 'white',
-  backgroundColor: 'rebeccapurple',
+  backgroundColor: '#7851a9',
   padding: '8px 15px',
-  border: '1px solid rebeccapurple',
+  border: '1px solid #7851a9',
   fontSize: '1.2rem',
   borderRadius: '5px',
   outline: 'none',
@@ -298,7 +299,7 @@ const data = [
   },
   {
     name: 'Arnold',
-    color: 'fuschia'
+    color: 'fuchsia'
   }
 ]
 
@@ -339,7 +340,7 @@ const data = [
   },
   {
     name: 'Arnold',
-    color: 'fuschia'
+    color: 'fuchsia'
   }
 ]
 
@@ -437,7 +438,7 @@ const data = [
   },
   {
     name: 'Arnold',
-    color: 'fuschia'
+    color: 'fuchsia'
   }
 ]
 
@@ -518,7 +519,7 @@ const data = [
   },
   {
     name: 'Arnold',
-    color: 'fuschia'
+    color: 'fuchsia'
   }
 ]
 
@@ -591,4 +592,24 @@ class FetchListData extends React.Component {
 render(
   <FetchListData />
 )
+`
+
+export const updatesInReact = `
+  class Ticker extends React.Component {
+    componentDidMount() {
+      setInterval( () => {
+        this.set()
+      }, 1000)
+    }
+
+    render() {
+      return (
+        <span>{timer}</span>
+      )
+    }
+  }
+
+  render(
+    <Ticker />
+  )
 `

@@ -3,6 +3,7 @@ import React from 'react';
 
 // Import Spectacle Core tags
 import {
+  Appear,
   BlockQuote,
   Cite,
   Code,
@@ -21,6 +22,9 @@ import {
   ComponentPlayground
 } from 'spectacle';
 
+import reactGoldStandard from './memes/react-gold-standard.jpg'
+import dansHair from './memes/dan-abramovs-hair.jpg'
+
 import * as codeExamples from './code-examples/examples'
 
 // Import theme
@@ -34,8 +38,8 @@ require('normalize.css');
 
 const theme = createTheme(
   {
-    primary: 'white',
-    secondary: '#1F2022',
+    primary: '#7851a9',
+    secondary: 'white',
     tertiary: '#03A9FC',
     quartenary: '#CECECE',
   },
@@ -44,6 +48,18 @@ const theme = createTheme(
     secondary: 'Helvetica',
   }
 );
+
+const buttonStyle = {
+  color: 'white',
+  backgroundColor: '#7851a9',
+  padding: '8px 15px',
+  border: '1px solid #7851a9',
+  fontSize: '1.2rem',
+  borderRadius: '5px',
+  outline: 'none',
+  cursor: 'pointer'
+}
+
 
 export default class Presentation extends React.Component {
   render() {
@@ -54,11 +70,22 @@ export default class Presentation extends React.Component {
         theme={theme}
       >
         <Slide transition={['zoom']} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Intro to react
+          <Heading size={1} caps lineHeight={1} textColor="secondary">
+            React
           </Heading>
+          <Heading size={6} caps textColor="secondary">
+             You, Me, And Dan Abramov's hair
+          </Heading>
+          <Appear>
+            <img src={dansHair} style={{width: '200px', height: '200px'}}/>
+          </Appear>
         </Slide>
-        <Slide transition={['fade']} bgColor="tertiary">
+
+        <Slide transition={['fade']} bgColor="primary">
+          <img src={reactGoldStandard} />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="primary">
           <Heading size={1} textColor="secondary">
             What's react?
           </Heading>
@@ -76,9 +103,9 @@ export default class Presentation extends React.Component {
             <List>
               <ListItem>frameworks: ember, angular, rails</ListItem>
               <ListItem>libraries: jquery, vuejs</ListItem>
-              <ListItem>frameworks give you everything out of the box, or as they say batteries included</ListItem>
-              <ListItem>using a library allow you to pull in whatever functionality you need</ListItem>
-              <ListItem>things like client side routing, form management, state management</ListItem>
+              <ListItem>frameworks give you everything out of the box, or batteries included</ListItem>
+              <ListItem>using a library allow you to pull in functionality as you need it</ListItem>
+              <ListItem>things like routing, state management, data layer</ListItem>
             </List>
 
             <NotesHeader>
@@ -86,25 +113,22 @@ export default class Presentation extends React.Component {
             </NotesHeader>
             <List>
               <ListItem>
-                easier to track how changes move through your application
+                can be easier to track how data changes through your application
               </ListItem>
               <ListItem>
-                Similar to how callbacks are considered anti patterns in rails,
-                makes it harder to follow the code path, more difficult to test
+                prevents some subtle bugs
               </ListItem>
-
             </List>
 
             <NotesHeader>
               virtual dom
             </NotesHeader>
             <List>
-              <ListItem>buzz word</ListItem>
-              <ListItem>an html page is a tree strucutre, the virtual dom is a stripped down version</ListItem>
-              <ListItem>allows batching of dom updates</ListItem>
-              <ListItem>uses a diffing algorithim to figure out the smallest number of dom operations needed to reflect changes</ListItem>
-              <ListItem>all the major frameworks / libraries do something similar</ListItem>
-              <ListItem>allows a clean separation between react and the rendering engine which allows things like react native</ListItem>
+              <ListItem>stripped down version of a web page</ListItem>
+              <ListItem>allows smart batching of dom updates</ListItem>
+              <ListItem>uses a diffing algorithim to figure out the smallest number of dom operations needed to reflect data changes</ListItem>
+              <ListItem>all major frameworks / libraries have adopted similar ideas as vdom</ListItem>
+              <ListItem>allows a clean separation between react and the rendering engine allowing things like react native</ListItem>
             </List>
 
             <NotesHeader>
@@ -115,15 +139,13 @@ export default class Presentation extends React.Component {
                 small api size
               </ListItem>
               <ListItem>
-                you learn javascript, not the framework
+                you learn javascript, not so much the framework
               </ListItem>
-              <ListItem>
-                similar to being a rails dev vs ruby dev
-              </ListItem>
+
               <ListItem>
                 knowledge is typically more transferable to other uses, with frameworks you can
-                end up learning more about the internals of the framework which
-                while useful, doesn't help too much down the line
+                end up learning more about how to do something in the framework, which
+                doesn't help too much down the line
               </ListItem>
             </List>
 
@@ -131,8 +153,8 @@ export default class Presentation extends React.Component {
 
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             whats babel?
           </Heading>
 
@@ -144,48 +166,69 @@ export default class Presentation extends React.Component {
               Allows you to use the new features of javascript before browsers
               support it natively
             </ListItem>
-
+            <ListItem>
+              polyfills
+            </ListItem>
+            <ListItem>
+              optimizations for the browser
+            </ListItem>
+            <ListItem>
+              <a href="https://codemix.com/blog/why-babel-matters">
+                codemix.com/blog/why-babel-matters
+              </a>
+            </ListItem>
           </List>
 
           <Notes>
             <NotesHeader>
-              what is babel / jsx
+              Babel?
             </NotesHeader>
             <List>
               <ListItem>
-                babel is a transpiler, or languages that compile to another language
+                babel is a transpiler, or language that compiles to another language
               </ListItem>
 
               <ListItem>
-                in this case babel is compiled into javascript the browser can understand it
+                Babel lets you write new javascript features before full browser compliance
               </ListItem>
+
               <ListItem>
-                Reason is so the code can run in older browsers as well
+                can backfill or polyfills feature for older browsers
+              </ListItem>
+
+              <ListItem>
+                runs at compile time so is able to make optimizations for the jit, the thing that
+                parses and runs javascript
               </ListItem>
             </List>
           </Notes>
         </Slide>
 
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            most useful babel things to know
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
+            useful es6+ features
           </Heading>
 
           <List>
             <ListItem>
-              const decleration
+              Const decleration
             </ListItem>
 
             <ListItem>
-              let decleration
+              Let decleration
             </ListItem>
+
+            <ListItem>
+              String interpolation
+            </ListItem>
+
             <ListItem>
               Class declerations
             </ListItem>
 
             <ListItem>
-              import / export
+              Import / Export
             </ListItem>
 
             <ListItem>
@@ -193,15 +236,11 @@ export default class Presentation extends React.Component {
             </ListItem>
 
             <ListItem>
-              spread operator
+              Spread operator
             </ListItem>
 
             <ListItem>
-              object destructuring
-            </ListItem>
-
-            <ListItem>
-              String interpolation
+              Object destructuring
             </ListItem>
 
             <ListItem>
@@ -210,8 +249,8 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             const deceleration
           </Heading>
 
@@ -223,8 +262,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             let deceleration
           </Heading>
 
@@ -236,8 +275,21 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
+            String interpolation
+          </Heading>
+
+          <CodePane
+            lang="js"
+            source={codeExamples.interpolationExample}
+            margin="20px auto"
+            overflow = "overflow"
+          />
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Class declerations
           </Heading>
 
@@ -262,8 +314,8 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Import / Export
           </Heading>
 
@@ -275,8 +327,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Arrow function
           </Heading>
 
@@ -288,8 +340,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             spread operator
           </Heading>
 
@@ -301,8 +353,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             object destructuring
           </Heading>
 
@@ -314,21 +366,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            String interpolation
-          </Heading>
-
-          <CodePane
-            lang="js"
-            source={codeExamples.interpolationExample}
-            margin="20px auto"
-            overflow = "overflow"
-          />
-        </Slide>
-
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Default arguments
           </Heading>
 
@@ -340,9 +379,55 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            Html in jsx
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
+            JSX?
+          </Heading>
+
+          <List>
+            <ListItem>
+              XML like syntax to write html / react components
+            </ListItem>
+
+            <ListItem>
+              Html attributes are camel cased
+            </ListItem>
+            <ListItem>
+              allows you to use any javascript expression in the markup by wrapping
+              it with curly brackets
+            </ListItem>
+
+            <ListItem>
+              can treat it as a javascript object
+            </ListItem>
+          </List>
+
+          <Notes>
+            <NotesHeader>
+              jsx
+            </NotesHeader>
+            <List>
+              <ListItem>
+                preprocessor step which translates the jsx into a javascript function call which returns an object
+              </ListItem>
+
+              <ListItem>
+                jsx doesn't separate technologies but concerns
+              </ListItem>
+
+              <ListItem>
+                When you pass an attribute to a component, it's called a property or prop
+              </ListItem>
+
+              <ListItem>
+              </ListItem>
+            </List>
+          </Notes>
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
+            Html
           </Heading>
 
           <ComponentPlayground
@@ -351,9 +436,9 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            Html in jsx
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
+            Dynamic Html Attributes in jsx
           </Heading>
 
           <ComponentPlayground
@@ -362,8 +447,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             JSX
           </Heading>
 
@@ -373,8 +458,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Handling lists
           </Heading>
 
@@ -384,8 +469,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Handling events
           </Heading>
 
@@ -395,8 +480,21 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
+            how to make react react
+          </Heading>
+
+          <List>
+            <ListItem>
+              props are compared
+            </ListItem>
+          </List>
+        </Slide>
+
+
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Stateful components
           </Heading>
 
@@ -406,8 +504,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Fetching data on events
           </Heading>
 
@@ -417,8 +515,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Fetching data on mount
           </Heading>
 
@@ -428,8 +526,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             Passing data to other components
           </Heading>
 
@@ -439,8 +537,8 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             jsx example
           </Heading>
 
@@ -477,8 +575,8 @@ export default class Presentation extends React.Component {
           </Notes>
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
+        <Slide transition={['fade']} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>
             how do i use it
           </Heading>
           <Heading size={1} textColor="secondary">
