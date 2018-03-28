@@ -449,18 +449,27 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['fade']} bgColor="primary">
           <Heading size={6} textColor="secondary" caps>
-            JSX
+            Jsx
           </Heading>
 
           <ComponentPlayground
             code={codeExamples.basicJSX}
             margin="20px auto"
           />
+
+          <Notes>
+            <NotesHeader>
+              jsx
+            </NotesHeader>
+            <List>
+              <ListItem>pass in different things to the props</ListItem>
+            </List>
+          </Notes>
         </Slide>
 
         <Slide transition={['fade']} bgColor="primary">
           <Heading size={6} textColor="secondary" caps>
-            Handling lists
+            Lists
           </Heading>
 
           <ComponentPlayground
@@ -471,7 +480,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['fade']} bgColor="primary">
           <Heading size={6} textColor="secondary" caps>
-            Handling events
+            Click events
           </Heading>
 
           <ComponentPlayground
@@ -487,9 +496,32 @@ export default class Presentation extends React.Component {
 
           <List>
             <ListItem>
-              props are compared
+              State vs props
+            </ListItem>
+            <ListItem>
+              Use class components
+            </ListItem>
+            <ListItem>
+              Create a state property on the class with initial values
+            </ListItem>
+            <ListItem>
+              Call setState to change the components state
             </ListItem>
           </List>
+
+          <Notes>
+            <NotesHeader>
+              how to make react react
+            </NotesHeader>
+            <List>
+              <ListItem>state is mutable and local to the component, it can change, props are passed in and are immutable, or can't be changed</ListItem>
+              <ListItem>component state is what makes your app dynamic</ListItem>
+              <ListItem>before we were using functional components, didn't do any state updates</ListItem>
+              <ListItem>class components give lifecycle hooks, outlets that you can do to manipulate props, do asynchronous stuff, handle third party events</ListItem>
+              <ListItem>setState causes react to re render components that need to be updated due to the change in state</ListItem>
+              <ListItem>say we pass down the state from one component to a child component as props, when we call set state will cause the child component to re render</ListItem>
+            </List>
+          </Notes>
         </Slide>
 
 
