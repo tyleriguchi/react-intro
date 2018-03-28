@@ -190,12 +190,23 @@ export const intermediateHtml = `
   )
 `
 export const basicJSX = `
+const buttonStyle = {
+  color: 'white',
+  backgroundColor: '#7851a9',
+  padding: '8px 15px',
+  border: '1px solid #7851a9',
+  fontSize: '1.2rem',
+  borderRadius: '5px',
+  outline: 'none',
+  cursor: 'pointer'
+}
+
 // const SnapButton = (props) => {
 //  const { text } = props
 
 const SnapButton = ({text}) => {
   return (
-    <button type="button">
+    <button style={buttonStyle} type="button">
       Hey {text}
     </button>
   )
@@ -207,6 +218,17 @@ render(
 `
 
 export const basicEventHandler = `
+const buttonStyle = {
+  color: 'white',
+  backgroundColor: '#7851a9',
+  padding: '8px 15px',
+  border: '1px solid #7851a9',
+  fontSize: '1.2rem',
+  borderRadius: '5px',
+  outline: 'none',
+  cursor: 'pointer'
+}
+
 const SnapButton = ({text}) => {
   const handleEvent = (e) => {
     alert("you clicked the button")
@@ -215,6 +237,7 @@ const SnapButton = ({text}) => {
   return (
     <button
       onClick={handleEvent}
+      style={buttonStyle}
     >
       Hey {text}
     </button>
@@ -329,6 +352,17 @@ render(
 `
 
 export const dataFetchingOnClick = `
+const buttonStyle = {
+  color: 'white',
+  backgroundColor: '#7851a9',
+  padding: '8px 15px',
+  border: '1px solid #7851a9',
+  fontSize: '1.2rem',
+  borderRadius: '5px',
+  outline: 'none',
+  cursor: 'pointer'
+}
+
 const data = [
   {
     name: 'Snap',
@@ -395,6 +429,7 @@ class DataList extends React.Component {
       <div>
         <button
           onClick={this.loadData}
+          style={buttonStyle}
         >
           Load Data
         </button>
