@@ -562,7 +562,7 @@ const fetch = (url) => {
   return new Promise( (resolve) => {
     setTimeout( () => {
       resolve(data)
-    }, 3000)
+    }, 2000)
   })
 }
 
