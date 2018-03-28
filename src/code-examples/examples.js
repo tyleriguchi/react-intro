@@ -274,7 +274,7 @@ class Counter extends React.Component {
 
   handleClick(e) {
     this.setState({
-      counter: this.state.counter += 1
+      counter: this.state.counter + 1
     })
   }
 
